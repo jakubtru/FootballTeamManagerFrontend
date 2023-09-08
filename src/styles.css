@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+body{
+  background:#DCDCDC;
+  margin-top:20px;
+}
+.card-box {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  width: 80%;
+}
+.thumb-lg {
+  height: 88px;
+  width: 88px;
+}
+.img-thumbnail {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto;
+}
+.text-pink {
+  color: #ff679b!important;
+}
+.btn-rounded {
+  border-radius: 2em;
+}
+.text-muted {
+  color: #98a6ad!important;
+}
+h4 {
+  line-height: 22px;
+  font-size: 18px;
+}
+.nav-bar {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(121, 121, 121, .2);
+  box-shadow: 0 2px 4px 0 rgba(121, 121, 121, .2);
+  padding: 20px 90px 0px 30px;
+  margin-bottom: 20px;
+  margin-top: 0px
+}
+.add-player {
+  margin-left: 10px;
+  border: 1px solid #98a6ad;
+  border-radius: 15px;
+}
+.custom-text {
+  margin-top: 8px;
+
+}

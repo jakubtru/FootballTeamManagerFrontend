@@ -29,4 +29,24 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getPlayers();
   }
+
+  public onOpenModal(player: Player | null, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode==='add'){
+      button.setAttribute('data-target', '#addPlayerModal');
+    }
+    if (mode==='edit'){
+      button.setAttribute('data-target', '#updatePlayerModal');
+    }
+    if (mode==='delete'){
+      button.setAttribute('data-target', '#deletePlayerModal');
+    }
+    // @ts-ignore
+    container.appendChild(button);
+    button.click();
+  }
 }
