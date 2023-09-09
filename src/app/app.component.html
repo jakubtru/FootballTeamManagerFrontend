@@ -31,8 +31,10 @@
               statistics
             </button>
             <div class="float-right btn-group btn-group-sm">
-              <a (click)="onOpenModal(player, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a (click)="onOpenModal(player, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+              <a (click)="onOpenModal(player, 'edit')" class="btn btn-primary tooltips" data-placement="top"
+                 data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+              <a (click)="onOpenModal(player, 'delete')" class="btn btn-secondary tooltips" data-placement="top"
+                 data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
             </div>
           </div>
         </div>
@@ -96,12 +98,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        Are you sure you want to delete this player?
-      </div>
+      <form #deleteForm="ngForm">
+        <div class="modal-body">
+          Are you sure you want to delete player {{deletePlayer?.name}}?
+        </div>
+      </form>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="close-button-2" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button (click)="onDeletePlayer(deletePlayer?.id)" type="submit" class="btn btn-primary">Yes</button>
       </div>
     </div>
   </div>
@@ -111,17 +115,39 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel3">Delete player</h5>
+        <h5 class="modal-title" id="exampleModalLabel3">Edit player data</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete this player?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <form #updateForm="ngForm">
+          <div class="forms">
+            <label for="name">Name</label>
+            <input type="text" ngModel="{{editPlayer?.name}}" name="name" placeholder="Name" required>
+          </div>
+          <input type="hidden" id="id" ngModel="{{editPlayer?.id}}">
+          <div class="forms">
+            <label for="position">Position</label>
+            <input type="text" ngModel="{{editPlayer?.position}}" name="position" placeholder="Position" required>
+          </div>
+          <div class="forms">
+            <label for="number">Number</label>
+            <input type="text" ngModel="{{editPlayer?.number}}" name="number" placeholder="Number" required>
+          </div>
+          <div class="forms">
+            <label for="dateOfBirth">Date of birth:</label>
+            <input type="text" ngModel="{{editPlayer?.dateOfBirth}}" name="dateOfBirth" placeholder="DateOfBirth" required>
+          </div>
+          <div class="forms">
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" ngModel="{{editPlayer?.imageUrl}}" name="imageUrl" placeholder="ImageUrl" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="close-button-3" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button (click)="onUpdatePlayer(updateForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

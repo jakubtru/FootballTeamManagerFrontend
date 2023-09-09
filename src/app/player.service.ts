@@ -24,7 +24,7 @@ export class PlayerService {
     return this.httpClient.put<Player>(`${this.apiServerUrl}/player/update`, player);
   }
 
-  public deletePlayer(playerId: number): Observable<void> {
+  public deletePlayer(playerId: number | undefined): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiServerUrl}/player/delete/${playerId}`);
   }
 

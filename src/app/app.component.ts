@@ -13,6 +13,8 @@ import {NgForm} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
   public players: Player[] | undefined;
+  public editPlayer: Player | null | undefined;
+  public deletePlayer: Player | null | undefined;
 
   constructor(private playerService: PlayerService) {
   }
@@ -41,9 +43,11 @@ export class AppComponent implements OnInit {
       button.setAttribute('data-target', '#addPlayerModal');
     }
     if (mode==='edit'){
+      this.editPlayer = player;
       button.setAttribute('data-target', '#updatePlayerModal');
     }
     if (mode==='delete'){
+      this.deletePlayer = player;
       button.setAttribute('data-target', '#deletePlayerModal');
     }
     // @ts-ignore
@@ -55,6 +59,33 @@ export class AppComponent implements OnInit {
     document.getElementById('close-button')?.click();
     this.playerService.addPlayer(addForm.value).subscribe(
       (response: Player) => {
+        console.log(response);
+        this.getPlayers();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+  public onUpdatePlayer(player: Player) {
+    //document.getElementById('close-button-3')?.click();
+    this.playerService.updatePlayer(player).subscribe(
+      (response: Player) => {
+        console.log(response);
+        this.getPlayers();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+  public onDeletePlayer(playerId: number | undefined) {
+    document.getElementById('close-button-2')?.click();
+    this.playerService.deletePlayer(playerId).subscribe(
+      (response: void) => {
         console.log(response);
         this.getPlayers();
       },
