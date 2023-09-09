@@ -47,7 +47,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="addPlayerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addPlayerModal" tabindex="-1" aria-labelledby="addPlayerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -89,7 +89,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="deletePlayerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletePlayerModal" tabindex="-1" aria-labelledby="deletePlayerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -111,7 +111,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="updatePlayerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updatePlayerModal" tabindex="-1" aria-labelledby="updatePlayerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -121,31 +121,31 @@
         </button>
       </div>
       <div class="modal-body">
-        <form #updateForm="ngForm">
+        <form #editForm="ngForm">
           <div class="forms">
             <label for="name">Name</label>
-            <input type="text" ngModel="{{editPlayer?.name}}" name="name" placeholder="Name" required>
+            <input type="text" ngModel="{{editPlayer?.name}}" name="name" placeholder="Name">
           </div>
-          <input type="hidden" id="id" ngModel="{{editPlayer?.id}}">
+          <input type="hidden" name="id" id="id" ngModel="{{editPlayer?.id}}">
           <div class="forms">
             <label for="position">Position</label>
-            <input type="text" ngModel="{{editPlayer?.position}}" name="position" placeholder="Position" required>
+            <input type="text" ngModel="{{editPlayer?.position}}" name="position" placeholder="Position">
           </div>
           <div class="forms">
             <label for="number">Number</label>
-            <input type="text" ngModel="{{editPlayer?.number}}" name="number" placeholder="Number" required>
+            <input type="text" ngModel="{{editPlayer?.number}}" name="number" placeholder="Number">
           </div>
           <div class="forms">
             <label for="dateOfBirth">Date of birth:</label>
-            <input type="text" ngModel="{{editPlayer?.dateOfBirth}}" name="dateOfBirth" placeholder="DateOfBirth" required>
+            <input type="text" ngModel="{{editPlayer?.dateOfBirth}}" name="dateOfBirth" placeholder="DateOfBirth">
           </div>
           <div class="forms">
             <label for="imageUrl">Image URL:</label>
-            <input type="text" ngModel="{{editPlayer?.imageUrl}}" name="imageUrl" placeholder="ImageUrl" required>
+            <input type="text" ngModel="{{editPlayer?.imageUrl}}" name="imageUrl" placeholder="ImageUrl">
           </div>
           <div class="modal-footer">
             <button type="button" id="close-button-3" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button (click)="onUpdatePlayer(updateForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+            <button (click)="onUpdatePlayer(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes</button>
           </div>
         </form>
       </div>
