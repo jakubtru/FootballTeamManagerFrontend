@@ -4,6 +4,7 @@ import {PlayerService} from "./player.service";
 import {HttpErrorResponse} from "@angular/common/http";
 //import alert from "$GLOBAL$";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -48,5 +49,18 @@ export class AppComponent implements OnInit {
     // @ts-ignore
     container.appendChild(button);
     button.click();
+  }
+
+  public onAddPlayer(addForm: NgForm) {
+    document.getElementById('close-button')?.click();
+    this.playerService.addPlayer(addForm.value).subscribe(
+      (response: Player) => {
+        console.log(response);
+        this.getPlayers();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 }

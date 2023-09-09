@@ -17,19 +17,19 @@ export class PlayerService {
   }
 
   public addPlayer(player: Player): Observable<Player> {
-    return this.httpClient.post<Player>('${this.apiServerUrl}/player/add', player);
+    return this.httpClient.post<Player>(`${this.apiServerUrl}/player/add`, player);
   }
 
   public updatePlayer(player: Player): Observable<Player> {
-    return this.httpClient.put<Player>('${this.apiServerUrl}/player/update', player);
+    return this.httpClient.put<Player>(`${this.apiServerUrl}/player/update`, player);
   }
 
   public deletePlayer(playerId: number): Observable<void> {
-    return this.httpClient.delete<void>('${this.apiServerUrl}/player/delete/${playerId}');
+    return this.httpClient.delete<void>(`${this.apiServerUrl}/player/delete/${playerId}`);
   }
 
   public getStatistics(playerId: number): Observable<Statistics> {
-    return this.httpClient.get<Statistics>('${this.apiServerUrl}/player/statistics/${playerId}');
+    return this.httpClient.get<Statistics>(`${this.apiServerUrl}/player/statistics/${playerId}`);
   }
 
   public addStatistics(statistics: Statistics, playerId: number): Observable<Statistics> {
