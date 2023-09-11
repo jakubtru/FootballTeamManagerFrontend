@@ -176,6 +176,7 @@ export class AppComponent implements OnInit {
 
   onDeleteStatistics(playerId: number | undefined) {
     document.getElementById('close-button-4')?.click();
+    document.getElementById('close-stats')?.click();
     this.playerService.deleteStatistics(playerId).subscribe(
       (response: void) => {
         console.log(response);
@@ -196,7 +197,7 @@ export class AppComponent implements OnInit {
       this.playerService.addStatistics(addForm.value, playerId).subscribe(
         (response: Statistics) => {
           console.log(response);
-          this.getPlayers();
+          this.getStatistics(response?.playerId);
           addForm.reset();
         },
         (error: HttpErrorResponse) => {
