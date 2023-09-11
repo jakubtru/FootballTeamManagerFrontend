@@ -36,7 +36,7 @@ export class PlayerService {
     return this.httpClient.post<Statistics>(`${this.apiServerUrl}/player/statistics/add/${playerId}`, statistics);
   }
 
-  public updateStatistics(statistics: Statistics, playerId: number): Observable<Statistics> {
+  public updateStatistics(statistics: Statistics, playerId: number | undefined): Observable<Statistics> {
     return this.httpClient.put<Statistics>(`${this.apiServerUrl}/player/statistics/update/${playerId}`, statistics);
   }
 

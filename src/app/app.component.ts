@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'edit') {
       this.editStatistics = statistics;
-      button.setAttribute('data-target', '#editStatisticsModal');
+      button.setAttribute('data-target', '#updateStatisticsModal');
     }
     if (mode === 'delete') {
       this.deleteStatistics = statistics;
@@ -131,6 +131,19 @@ export class AppComponent implements OnInit {
     //document.getElementById('close-button-3')?.click();
     this.playerService.updatePlayer(player).subscribe(
       (response: Player) => {
+        console.log(response);
+        this.getPlayers();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
+  }
+
+  public onUpdateStatistics(statistics: Statistics) {
+    document.getElementById('close-button-5')?.click();
+    this.playerService.updateStatistics(statistics, this.editStatistics?.playerId).subscribe(
+      (response: Statistics) => {
         console.log(response);
         this.getPlayers();
       },
