@@ -51,7 +51,8 @@ h4 {
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  background-color: #DCDCDC;
+  background-color: #007BFF;
+  color: white;
 }
 .custom-text {
   margin-top: 1px;
@@ -76,4 +77,12 @@ h4 {
 .stats {
 margin-top: 10px;
   padding: 5% 5% 5% 7%;
+}
+.footbal_img {
+  width: 3em;
+  height: 3em;
+  margin-bottom: 8px;
+}
+.col-sm-4 {
+  color: white;
 }
