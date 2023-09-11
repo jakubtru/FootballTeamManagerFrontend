@@ -32,7 +32,7 @@ export class PlayerService {
     return this.httpClient.get<Statistics>(`${this.apiServerUrl}/player/statistics/${playerId}`);
   }
 
-  public addStatistics(statistics: Statistics, playerId: number): Observable<Statistics> {
+  public addStatistics(statistics: Statistics, playerId: number | undefined): Observable<Statistics> {
     return this.httpClient.post<Statistics>(`${this.apiServerUrl}/player/statistics/add/${playerId}`, statistics);
   }
 

@@ -108,6 +108,9 @@ export class AppComponent implements OnInit {
       this.deleteStatistics = statistics;
       button.setAttribute('data-target', '#deleteStatisticsModal');
     }
+    if (mode==='add') {
+      button.setAttribute('data-target', '#addStatisticsModal');
+    }
     // @ts-ignore
     container.appendChild(button);
     button.click();
@@ -145,7 +148,7 @@ export class AppComponent implements OnInit {
     this.playerService.updateStatistics(statistics, this.editStatistics?.playerId).subscribe(
       (response: Statistics) => {
         console.log(response);
-        this.getPlayers();
+        this.getStatistics(this.editStatistics?.playerId);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -183,4 +186,27 @@ export class AppComponent implements OnInit {
       }
     )
   }
+
+  public onAddStatistics(addForm: NgForm) {
+    // @ts-ignore
+    const playerId = this.showPlayer.id;
+    console.log(playerId);
+    if (playerId) {
+      document.getElementById('close-button-7')?.click();
+      this.playerService.addStatistics(addForm.value, playerId).subscribe(
+        (response: Statistics) => {
+          console.log(response);
+          this.getPlayers();
+          addForm.reset();
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+    } else {
+      // Handle the case where playerId is undefined
+      console.error('Player ID is undefined');
+    }
+  }
+
 }

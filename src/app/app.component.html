@@ -61,18 +61,26 @@
       </div>
       <div class="stats">
         <p *ngIf="showPlayer"><strong>Player Statistics for {{showPlayer.name}}</strong></p>
-        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/1.png">Goals: {{statistics.goals}}</p>
-        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/2.png">Assists: {{statistics.assists}}</p>
-        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/5.png">Games played: {{statistics.gamesPlayed}}</p>
-        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/6.png">Minutes played: {{statistics.minutesPlayed}}</p>
-        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/4.png">Yellow cards: {{statistics.yellowCards}}</p>
-        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/3.png">Red cards: {{statistics.redCards}}</p>
+        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/1.png" alt="">Goals: {{statistics.goals}}</p>
+        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/2.png" alt="">Assists: {{statistics.assists}}</p>
+        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/5.png" alt="">Games played: {{statistics.gamesPlayed}}</p>
+        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/6.png" alt="">Minutes played: {{statistics.minutesPlayed}}</p>
+        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/4.png" alt="">Yellow cards: {{statistics.yellowCards}}</p>
+        <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/3.png" alt="">Red cards: {{statistics.redCards}}</p>
       </div>
       <div class="functional-buttons btn-group btn-group-sm">
-        <a (click)="onOpenStatisticsModal(statistics,'edit')" class="btn btn-primary tooltips" data-placement="top"
-           data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-        <a (click)="onOpenStatisticsModal(statistics,'delete')" class="btn btn-secondary tooltips" data-placement="top"
-           data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+        <a *ngIf="!statistics" (click)="onOpenStatisticsModal(null,'add')" class="btn btn-secondary tooltips" data-placement="top"
+           data-toggle="tooltip" data-original-title="Add">
+          <i class="fa-solid fa-square-check" style="color: #62a763;"></i> Add
+        </a>
+        <a *ngIf="statistics" (click)="onOpenStatisticsModal(statistics,'edit')" class="btn btn-primary tooltips" data-placement="top"
+           data-toggle="tooltip" data-original-title="Edit">
+          <i class="fa fa-pencil"></i> Edit
+        </a>
+        <a *ngIf="statistics" (click)="onOpenStatisticsModal(statistics,'delete')" class="btn btn-secondary tooltips" data-placement="top"
+           data-toggle="tooltip" data-original-title="Delete">
+          <i class="fa fa-times"></i> Delete
+        </a>
       </div>
     </div>
   </div>
@@ -91,29 +99,29 @@
         <form #editForm="ngForm">
           <div class="forms">
             <label for="goals">Goals: </label><br>
-            <input class="input-box" id="goals" type="text" ngModel="{{editStatistics?.goals}}" name="goals" placeholder="Goals">
+            <input class="input-box" type="text" ngModel="{{editStatistics?.goals}}" name="goals" placeholder="Goals">
           </div>
           <input type="hidden" name="id" id="id2" ngModel="{{editStatistics?.id}}">
           <input type="hidden" name="playerId" id="playedId" ngModel="{{editStatistics?.playerId}}">
           <div class="forms">
             <label for="assists">Assists: </label><br>
-            <input class="input-box" type="text" id="assists" ngModel="{{editStatistics?.assists}}" name="assists" placeholder="Assists">
+            <input class="input-box" type="text" ngModel="{{editStatistics?.assists}}" name="assists" placeholder="Assists">
           </div>
           <div class="forms">
             <label for="gamesPlayed">Games played: </label><br>
-            <input class="input-box" id="gamesPlayed" type="text" ngModel="{{editStatistics?.gamesPlayed}}" name="gamesPlayed" placeholder="GamesPlayed">
+            <input class="input-box" type="text" ngModel="{{editStatistics?.gamesPlayed}}" name="gamesPlayed" placeholder="GamesPlayed">
           </div>
           <div class="forms">
             <label for="minutesPlayed">Minutes played: </label><br>
-            <input class="input-box" id="minutesPlayed" type="text" ngModel="{{editStatistics?.minutesPlayed}}" name="minutesPlayed" placeholder="MinutesPlayed">
+            <input class="input-box" type="text" ngModel="{{editStatistics?.minutesPlayed}}" name="minutesPlayed" placeholder="MinutesPlayed">
           </div>
           <div class="forms">
             <label for="yellowCards">Yellow cards: </label><br>
-            <input class="input-box" id="yellowCards" type="text" ngModel="{{editStatistics?.yellowCards}}" name="yellowCards" placeholder="YellowCards">
+            <input class="input-box" type="text" ngModel="{{editStatistics?.yellowCards}}" name="yellowCards" placeholder="YellowCards">
           </div>
           <div class="forms">
             <label for="redCards">Red cards: </label><br>
-            <input class="input-box" id="redCards" type="text" ngModel="{{editStatistics?.redCards}}" name="redCards" placeholder="RedCards">
+            <input class="input-box" type="text" ngModel="{{editStatistics?.redCards}}" name="redCards" placeholder="RedCards">
           </div>
           <div class="modal-footer">
             <button type="button" id="close-button-5" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -147,6 +155,51 @@
   </div>
 </div>
 
+<div class="modal fade" id="addStatisticsModal" tabindex="-1" aria-labelledby="addStatisticsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel7">Add statistics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddStatistics(addForm)">
+          <div class="forms">
+            <label for="goals">Goals: </label><br>
+            <input class="input-box" id="goals" type="number" ngModel name="goals" placeholder="Goals" required>
+          </div>
+          <div class="forms">
+            <label for="assists">Assists: </label><br>
+            <input class="input-box" type="number" id="assists" ngModel name="assists" placeholder="Assists" required>
+          </div>
+          <div class="forms">
+            <label for="gamesPlayed">Games played: </label><br>
+            <input class="input-box" id="gamesPlayed" type="number" ngModel name="gamesPlayed" placeholder="GamesPlayed" required>
+          </div>
+          <div class="forms">
+            <label for="minutesPlayed">Minutes played: </label><br>
+            <input class="input-box" id="minutesPlayed" type="number" ngModel name="minutesPlayed" placeholder="MinutesPlayed" required>
+          </div>
+          <div class="forms">
+            <label for="yellowCards">Yellow cards: </label><br>
+            <input class="input-box" id="yellowCards" type="number" ngModel name="yellowCards" placeholder="YellowCards" required>
+          </div>
+          <div class="forms">
+            <label for="redCards">Red cards: </label><br>
+            <input class="input-box" id="redCards" type="number" ngModel name="redCards" placeholder="RedCards" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="close-button-7" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Sumbit statistics</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="addPlayerModal" tabindex="-1" aria-labelledby="addPlayerModalLabel" aria-hidden="true">
