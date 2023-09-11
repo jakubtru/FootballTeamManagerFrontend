@@ -37,10 +37,10 @@ export class AppComponent implements OnInit {
       if (player.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(player);
       }
-      this.players = results;
-      if (results.length === 0 || !key) {
-        this.getPlayers();
-      }
+    }
+    this.players = results;
+    if (results.length === 0 || !key) {
+      this.getPlayers();
     }
   }
 
