@@ -46,16 +46,30 @@ h4 {
   margin-top: 0px
 }
 .add-player {
+  padding: 5px 10px 7px 10px;
   margin-left: 10px;
-  border: 1px solid #98a6ad;
+  border: none;
   border-radius: 15px;
+  cursor: pointer;
+  background-color: #DCDCDC;
 }
 .custom-text {
-  margin-top: 8px;
+  margin-top: 1px;
+  padding-bottom:7px;
 }
 .functional-buttons{
   margin-top:15px;
   right:100px;
   top:0px;
   position:absolute;
+}
+.col-sm-4 {
+  margin-top:2px;
+}
+.input-box {
+  width:100%;
+  color: #98a6ad;
+}
+.forms {
+  padding: 0% 5% 5% 5%;
 }

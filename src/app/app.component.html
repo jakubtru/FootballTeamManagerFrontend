@@ -18,7 +18,7 @@
       <div class="col-lg-4" *ngFor="let player of players">
         <div class="text-center card-box">
           <div class="member-card pt-2 pb-2">
-            <div class="thumb-lg member-thumb mx-auto"><img src="{{player?.imageUrl}}}"
+            <div class="thumb-lg member-thumb mx-auto"><img src="{{player?.imageUrl}}"
                                                             class="rounded-circle img-thumbnail" alt="profile-image">
             </div>
             <div class="">
@@ -61,23 +61,23 @@
         <form #addForm="ngForm" (ngSubmit)="onAddPlayer(addForm)">
           <div class="forms">
             <label for="name">Name</label>
-            <input type="text" id="name" ngModel name="name" placeholder="Name" required>
+            <input class="input-box" type="text" id="name" ngModel name="name" placeholder="Name" required>
           </div>
           <div class="forms">
             <label for="position">Position</label>
-            <input type="text" id="position" ngModel name="position" placeholder="Position" required>
+            <input class="input-box" type="text" id="position" ngModel name="position" placeholder="Position" required>
           </div>
           <div class="forms">
             <label for="number">Number</label>
-            <input type="text" id="number" ngModel name="number" placeholder="Number" required>
+            <input class="input-box" type="text" id="number" ngModel name="number" placeholder="Number" required>
           </div>
           <div class="forms">
             <label for="dateOfBirth">Date of birth:</label>
-            <input type="text" id="dateOfBirth" ngModel name="dateOfBirth" placeholder="DateOfBirth" required>
+            <input class="input-box" type="text" id="dateOfBirth" ngModel name="dateOfBirth" placeholder="DateOfBirth" required>
           </div>
           <div class="forms">
             <label for="imageUrl">Image URL:</label>
-            <input type="text" id="imageUrl" ngModel name="imageUrl" placeholder="ImageUrl" required>
+            <input class="input-box" type="text" id="imageUrl" ngModel name="imageUrl" placeholder="ImageUrl" required>
           </div>
           <div class="modal-footer">
             <button type="button" id="close-button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -124,25 +124,25 @@
       <div class="modal-body">
         <form #editForm="ngForm">
           <div class="forms">
-            <label for="name">Name</label>
-            <input type="text" ngModel="{{editPlayer?.name}}" name="name" placeholder="Name">
+            <label for="name">Name: </label><br>
+            <input class="input-box" type="text" ngModel="{{editPlayer?.name}}" name="name" placeholder="Name">
           </div>
           <input type="hidden" name="id" id="id" ngModel="{{editPlayer?.id}}">
           <div class="forms">
-            <label for="position">Position</label>
-            <input type="text" ngModel="{{editPlayer?.position}}" name="position" placeholder="Position">
+            <label for="position">Position: </label><br>
+            <input class="input-box" type="text" ngModel="{{editPlayer?.position}}" name="position" placeholder="Position">
           </div>
           <div class="forms">
-            <label for="number">Number</label>
-            <input type="text" ngModel="{{editPlayer?.number}}" name="number" placeholder="Number">
+            <label for="number">Number: </label><br>
+            <input class="input-box" type="text" ngModel="{{editPlayer?.number}}" name="number" placeholder="Number">
           </div>
           <div class="forms">
-            <label for="dateOfBirth">Date of birth:</label>
-            <input type="text" ngModel="{{editPlayer?.dateOfBirth}}" name="dateOfBirth" placeholder="DateOfBirth">
+            <label for="dateOfBirth">Date of birth: </label><br>
+            <input class="input-box" type="text" ngModel="{{editPlayer?.dateOfBirth}}" name="dateOfBirth" placeholder="DateOfBirth">
           </div>
           <div class="forms">
-            <label for="imageUrl">Image URL:</label>
-            <input type="text" ngModel="{{editPlayer?.imageUrl}}" name="imageUrl" placeholder="ImageUrl">
+            <label for="imageUrl">Image URL: </label><br>
+            <input class="input-box" type="text" ngModel="{{editPlayer?.imageUrl}}" name="imageUrl" placeholder="ImageUrl">
           </div>
           <div class="modal-footer">
             <button type="button" id="close-button-3" class="btn btn-secondary" data-dismiss="modal">Close</button>
