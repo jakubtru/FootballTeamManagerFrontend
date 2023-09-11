@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   public deletePlayer: Player | null | undefined;
   public showPlayer: Player | null | undefined;
   public statistics: Statistics | undefined;
+  public editStatistics: Statistics | null | undefined;
+  public deleteStatistics: Statistics | null | undefined;
 
   constructor(private playerService: PlayerService) {
   }
@@ -92,6 +94,25 @@ export class AppComponent implements OnInit {
     button.click();
   }
 
+  public onOpenStatisticsModal(statistics: Statistics | null | undefined, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'edit') {
+      this.editStatistics = statistics;
+      button.setAttribute('data-target', '#editStatisticsModal');
+    }
+    if (mode === 'delete') {
+      this.deleteStatistics = statistics;
+      button.setAttribute('data-target', '#deleteStatisticsModal');
+    }
+    // @ts-ignore
+    container.appendChild(button);
+    button.click();
+  }
+
   public onAddPlayer(addForm: NgForm) {
     document.getElementById('close-button')?.click();
     this.playerService.addPlayer(addForm.value).subscribe(
@@ -135,5 +156,18 @@ export class AppComponent implements OnInit {
   openStatisticsAndAnotherMethod(player: Player) {
     this.openStatisticsModal(player);
     this.getStatistics(player?.id)
+  }
+
+  onDeleteStatistics(playerId: number | undefined) {
+    document.getElementById('close-button-4')?.click();
+    this.playerService.deleteStatistics(playerId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getPlayers();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    )
   }
 }

@@ -33,15 +33,15 @@ export class PlayerService {
   }
 
   public addStatistics(statistics: Statistics, playerId: number): Observable<Statistics> {
-    return this.httpClient.post<Statistics>(`$\{this.apiServerUrl}/player/statistics/add/${playerId}`, statistics);
+    return this.httpClient.post<Statistics>(`${this.apiServerUrl}/player/statistics/add/${playerId}`, statistics);
   }
 
   public updateStatistics(statistics: Statistics, playerId: number): Observable<Statistics> {
-    return this.httpClient.put<Statistics>(`$\{this.apiServerUrl}/player/statistics/update/${playerId}`, statistics);
+    return this.httpClient.put<Statistics>(`${this.apiServerUrl}/player/statistics/update/${playerId}`, statistics);
   }
 
-  public deleteStatistics(playerId: number): Observable<void> {
-    return this.httpClient.delete<void>(`$\{this.apiServerUrl}/player/statistics/delete/${playerId}`);
+  public deleteStatistics(playerId: number | undefined): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiServerUrl}/player/statistics/delete/${playerId}`);
   }
 
   public deleteAllInfo(playerId: number): Observable<void> {

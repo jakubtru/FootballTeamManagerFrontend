@@ -14,9 +14,7 @@
 </div>
 
 <div class="content">
-
   <div class="container" id="main-container">
-
     <!-- end row -->
     <div class="row">
       <div class="col-lg-4" *ngFor="let player of players">
@@ -69,6 +67,35 @@
         <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/6.png">Minutes played: {{statistics.minutesPlayed}}</p>
         <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/4.png">Yellow cards: {{statistics.yellowCards}}</p>
         <p *ngIf="statistics"><img class="footbal_img" src="assets/football_icons/3.png">Red cards: {{statistics.redCards}}</p>
+      </div>
+      <div class="functional-buttons btn-group btn-group-sm">
+        <a (click)="onOpenStatisticsModal(statistics,'edit')" class="btn btn-primary tooltips" data-placement="top"
+           data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+        <a (click)="onOpenStatisticsModal(statistics,'delete')" class="btn btn-secondary tooltips" data-placement="top"
+           data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteStatisticsModal" tabindex="-1" aria-labelledby="deleteStatisticsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel5">Delete statistics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #deleteForm="ngForm">
+        <div class="modal-body">
+          Are you sure you want to delete these statistics?
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" id="close-button-4" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button (click)="onDeleteStatistics(deleteStatistics?.playerId)" type="submit" class="btn btn-primary">Yes</button>
       </div>
     </div>
   </div>
