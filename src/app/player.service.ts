@@ -28,7 +28,7 @@ export class PlayerService {
     return this.httpClient.delete<void>(`${this.apiServerUrl}/player/delete/${playerId}`);
   }
 
-  public getStatistics(playerId: number): Observable<Statistics> {
+  public getStatistics(playerId: number | undefined): Observable<Statistics> {
     return this.httpClient.get<Statistics>(`${this.apiServerUrl}/player/statistics/${playerId}`);
   }
 

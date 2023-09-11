@@ -3,7 +3,7 @@
   <div class="row">
     <p class="custom-text"><strong>Football Team Manager</strong></p>
     <div class="col-sm-4">
-      <a class="add-player" (click)="onOpenModal(null, 'add')">Add Player<span class="sr-only">(current)</span></a>
+      <a class="add-player" (click)="onOpenModal(null,'add')">Add Player<span class="sr-only">(current)</span></a>
     </div>
     <!-- end col -->
   </div>
@@ -27,14 +27,14 @@
               <p class="text">Number: {{player?.number}}</p>
               <p class="text">Birthdate: {{player?.dateOfBirth}}</p>
             </div>
-            <button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Show
+            <button  (click)="openStatisticsAndAnotherMethod(player)" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#getStatisticsModal">Show
               statistics
             </button>
             <br>
             <div class="functional-buttons btn-group btn-group-sm">
-              <a (click)="onOpenModal(player, 'edit')" class="btn btn-primary tooltips" data-placement="top"
+              <a (click)="onOpenModal(player,'edit')" class="btn btn-primary tooltips" data-placement="top"
                  data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a (click)="onOpenModal(player, 'delete')" class="btn btn-secondary tooltips" data-placement="top"
+              <a (click)="onOpenModal(player,'delete')" class="btn btn-secondary tooltips" data-placement="top"
                  data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
             </div>
           </div>
@@ -46,6 +46,30 @@
   </div>
   <!-- container -->
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="getStatisticsModal" tabindex="-1" aria-labelledby="getStatisticsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel4">Statistics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="stats">
+        <p *ngIf="showPlayer"><strong>Player Statistics for {{showPlayer.name}}</strong></p>
+        <p *ngIf="statistics">Goals: {{statistics.goals}}</p>
+        <p *ngIf="statistics">Assists: {{statistics.assists}}</p>
+        <p *ngIf="statistics">Games played: {{statistics.gamesPlayed}}</p>
+        <p *ngIf="statistics">Minutes played: {{statistics.minutesPlayed}}</p>
+        <p *ngIf="statistics">Yellow cards: {{statistics.yellowCards}}</p>
+        <p *ngIf="statistics">Red cards: {{statistics.redCards}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="addPlayerModal" tabindex="-1" aria-labelledby="addPlayerModalLabel" aria-hidden="true">
