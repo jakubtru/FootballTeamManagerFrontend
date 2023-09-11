@@ -5,7 +5,11 @@
     <div class="col-sm-4">
       <a class="add-player" (click)="onOpenModal(null,'add')">Add Player<span class="sr-only">(current)</span></a>
     </div>
+
     <!-- end col -->
+  </div>
+  <div class="search">
+    <input type="search" name="key" id="search-tab1" placeholder="Search" #key="ngModel" ngModel (ngModelChange)="searchPlayer(key.value)">
   </div>
 </div>
 

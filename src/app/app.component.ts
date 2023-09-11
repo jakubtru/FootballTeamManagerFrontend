@@ -30,6 +30,20 @@ export class AppComponent implements OnInit {
       });
   }
 
+  public searchPlayer(key: string): void {
+    const results: Player[] = [];
+    console.log(key);
+    for (const player of this.players!) {
+      if (player.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(player);
+      }
+      this.players = results;
+      if (results.length === 0 || !key) {
+        this.getPlayers();
+      }
+    }
+  }
+
   public getStatistics(playerId: number | undefined): void {
     this.playerService.getStatistics(playerId).subscribe(
       (response: Statistics) => {
@@ -58,18 +72,18 @@ export class AppComponent implements OnInit {
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
-    if (mode==='add'){
+    if (mode === 'add') {
       button.setAttribute('data-target', '#addPlayerModal');
     }
-    if (mode==='edit'){
+    if (mode === 'edit') {
       this.editPlayer = player;
       button.setAttribute('data-target', '#updatePlayerModal');
     }
-    if (mode==='delete'){
+    if (mode === 'delete') {
       this.deletePlayer = player;
       button.setAttribute('data-target', '#deletePlayerModal');
     }
-    if(mode==='show-stats') {
+    if (mode === 'show-stats') {
       this.showPlayer = player;
       button.setAttribute('data-target', '#getStatisticsModal');
     }

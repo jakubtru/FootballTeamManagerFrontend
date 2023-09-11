@@ -86,3 +86,13 @@ margin-top: 10px;
 .col-sm-4 {
   color: white;
 }
+.search {
+  right: 5%;
+  position:absolute;
+  top: 5.5%;
+}
+#search-tab1 {
+  border-radius: 7px;
+  border: 1px solid black;
+  padding: 3px;
+}
